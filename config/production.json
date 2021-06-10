@@ -1,0 +1,7 @@
+{
+    "mongoURI": "mongodb+srv://alishahrose:sharingo@cluster0.bmmco.mongodb.net/Sharingo?retryWrites=true&w=majority",
+    "jwtSecret": "U2hhcmluZ29KV1RTZWNyZXQ=",
+    "cloudinaryName": "sharingo",
+    "cloudinaryAPI": "196285225186376",
+    "cloudinarySecret": "HZ3_cjoa1y_I9GV1oyY0Ja7KSZw"
+}
