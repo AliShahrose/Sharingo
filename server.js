@@ -18,10 +18,10 @@ app.use(
 );
 
 // Routes
-app.use("/auth", require("./routes/auth"));
-app.use("/user", require("./routes/user"));
-app.use("/profile", require("./routes/profile"));
-app.use("/post", require("./routes/post"));
+app.use("/api/auth", require("./routes/api/auth"));
+app.use("/api/user", require("./routes/api/user"));
+app.use("/api/profile", require("./routes/api/profile"));
+app.use("/api/post", require("./routes/api/post"));
 
 // Heroku Production
 if (process.env.NODE_ENV === "production") {

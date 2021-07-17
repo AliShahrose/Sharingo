@@ -19,7 +19,7 @@ export const loadUser = () => async (dispatch) => {
   if (localStorage.token) setHeaderToken(localStorage.token);
 
   try {
-    const response = await axios.get("http://localhost:5000/auth");
+    const response = await axios.get("/api/auth");
     dispatch({
       type: USER_LOADED,
       payload: response.data.payload,
@@ -44,11 +44,7 @@ export const signUpAction =
     const body = JSON.stringify({ firstName, lastName, email, password });
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/signUp",
-        body,
-        config
-      );
+      const response = await axios.post("/api/user/signUp", body, config);
 
       dispatch({
         type: SIGNUP_SUCCESS,
@@ -78,11 +74,7 @@ export const signInAction =
     const body = JSON.stringify({ email, password });
 
     try {
-      const response = await axios.post(
-        "http://localhost:5000/user/signIn",
-        body,
-        config
-      );
+      const response = await axios.post("/api/user/signIn", body, config);
 
       dispatch({
         type: SIGNIN_SUCCESS,
@@ -119,7 +111,7 @@ export const changePasswordAction =
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/user/changePassword",
+        "/api/user/changePassword",
         body,
         config
       );

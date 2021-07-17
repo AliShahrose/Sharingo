@@ -4,11 +4,11 @@ const bcrypt = require("bcryptjs");
 const config = require("config");
 const jwt = require("jsonwebtoken");
 const jwtSecret = config.get("jwtSecret");
-const auth = require("../middleware/auth");
+const auth = require("../../middleware/auth");
 
-const { validate, response } = require("../utilities/serverHelper");
+const { validate, response } = require("../../utilities/serverHelper");
 
-const User = require("../models/User");
+const User = require("../../models/User");
 
 // Register user
 router.post("/signUp", async (req, res) => {

@@ -1,13 +1,13 @@
 const express = require("express");
 const router = express.Router();
-const auth = require("../middleware/auth");
+const auth = require("../../middleware/auth");
 
-const { validate, response } = require("../utilities/serverHelper");
-const { uploadImage, deleteImage } = require("../utilities/cloudinary");
+const { validate, response } = require("../../utilities/serverHelper");
+const { uploadImage, deleteImage } = require("../../utilities/cloudinary");
 
 // Models
-const User = require("../models/User");
-const Post = require("../models/Post");
+const User = require("../../models/User");
+const Post = require("../../models/Post");
 
 // Add post
 router.post("/add", auth, async (req, res) => {

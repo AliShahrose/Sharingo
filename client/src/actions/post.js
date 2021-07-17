@@ -20,11 +20,7 @@ export const addPostAction = (formData, history) => async (dispatch) => {
     },
   };
   try {
-    const response = await axios.post(
-      "http://localhost:5000/post/add",
-      formData,
-      config
-    );
+    const response = await axios.post("/api/post/add", formData, config);
     dispatch({
       type: ADD_POST,
       payload: response.data.payload,
@@ -45,7 +41,7 @@ export const addPostAction = (formData, history) => async (dispatch) => {
 export const getAllPostsAction = () => async (dispatch) => {
   dispatch({ type: CLEAR_POSTS });
   try {
-    const response = await axios.get("http://localhost:5000/post/all");
+    const response = await axios.get("/api/post/all");
     dispatch({
       type: GET_POSTS,
       payload: response.data.payload,
@@ -64,7 +60,7 @@ export const getAllPostsAction = () => async (dispatch) => {
 export const getUserAllPostsAction = (id) => async (dispatch) => {
   dispatch({ type: CLEAR_POSTS });
   try {
-    const response = await axios.get(`http://localhost:5000/post/all/${id}`);
+    const response = await axios.get(`/api/post/all/${id}`);
     dispatch({
       type: GET_POSTS,
       payload: response.data.payload,
@@ -82,7 +78,7 @@ export const getUserAllPostsAction = (id) => async (dispatch) => {
 // Get single post
 export const getSinglePostAction = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:5000/post/${id}`);
+    const response = await axios.get(`/api/post/${id}`);
     dispatch({
       type: GET_POST,
       payload: response.data.payload,
@@ -100,9 +96,7 @@ export const getSinglePostAction = (id) => async (dispatch) => {
 // Like a post
 export const addLikeAction = (postID) => async (dispatch) => {
   try {
-    const response = await axios.put(
-      `http://localhost:5000/post/like/${postID}`
-    );
+    const response = await axios.put(`/api/post/like/${postID}`);
     dispatch({
       type: UPDATE_LIKES,
       payload: response.data.payload,
@@ -121,9 +115,7 @@ export const addLikeAction = (postID) => async (dispatch) => {
 // Unlike a post
 export const removeLikeAction = (postID) => async (dispatch) => {
   try {
-    const response = await axios.put(
-      `http://localhost:5000/post/unlike/${postID}`
-    );
+    const response = await axios.put(`/api/post/unlike/${postID}`);
     dispatch({
       type: UPDATE_LIKES,
       payload: response.data.payload,
@@ -148,7 +140,7 @@ export const addCommentAction = (postID, formData) => async (dispatch) => {
   };
   try {
     const response = await axios.post(
-      `http://localhost:5000/post/comment/${postID}`,
+      `/api/post/comment/${postID}`,
       formData,
       config
     );
@@ -171,7 +163,7 @@ export const addCommentAction = (postID, formData) => async (dispatch) => {
 export const removeCommentAction = (postID, commentID) => async (dispatch) => {
   try {
     const response = await axios.delete(
-      `http://localhost:5000/post/comment/${postID}/${commentID}`
+      `/api/post/comment/${postID}/${commentID}`
     );
     dispatch({
       type: REMOVE_COMMENT,
@@ -191,7 +183,7 @@ export const removeCommentAction = (postID, commentID) => async (dispatch) => {
 // Delete post
 export const deletePostAction = (id, history) => async (dispatch) => {
   try {
-    const response = await axios.delete(`http://localhost:5000/post/${id}`);
+    const response = await axios.delete(`/api/post/${id}`);
     dispatch({
       type: DELETE_POST,
     });

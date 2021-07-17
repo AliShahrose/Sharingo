@@ -12,7 +12,7 @@ import {
 // Get current user profile
 export const getCurrentProfileAction = () => async (dispatch) => {
   try {
-    const response = await axios.get("http://localhost:5000/profile");
+    const response = await axios.get("/api/profile");
 
     dispatch({
       type: GET_PROFILE,
@@ -30,7 +30,7 @@ export const getCurrentProfileAction = () => async (dispatch) => {
 export const getAllProfilesAction = () => async (dispatch) => {
   dispatch({ type: CLEAR_PROFILE });
   try {
-    const response = await axios.get("http://localhost:5000/profile/all");
+    const response = await axios.get("/api/profile/all");
 
     dispatch({
       type: GET_PROFILES,
@@ -51,7 +51,7 @@ export const getSingleProfileAction = (userID) => async (dispatch) => {
     type: CLEAR_PROFILES,
   });
   try {
-    const response = await axios.get(`http://localhost:5000/profile/${userID}`);
+    const response = await axios.get(`/api/profile/${userID}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -74,11 +74,7 @@ export const createOrUpdateProfileAction =
           "Content-Type": "application/json",
         },
       };
-      const response = await axios.post(
-        "http://localhost:5000/profile/add",
-        formData,
-        config
-      );
+      const response = await axios.post("/api/profile/add", formData, config);
 
       dispatch({
         type: GET_PROFILE,
@@ -101,7 +97,7 @@ export const createOrUpdateProfileAction =
 export const deleteAccountAction = () => async (dispatch) => {
   const deleteAccount = () => async () => {
     try {
-      const response = await axios.delete("http://localhost:5000/profile");
+      const response = await axios.delete("/api/profile");
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: DELETE_ACCOUNT });
